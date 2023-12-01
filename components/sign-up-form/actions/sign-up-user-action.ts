@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { signUpUserSchema } from '../schemas/sign-up-user-schema';
+import { signUpUserActionSchema } from '../schemas/sign-up-user-schema';
 import { Error } from '@/types/action-types';
 import prismaClient from '@/prisma/prisma';
 
@@ -10,7 +10,7 @@ import prismaClient from '@/prisma/prisma';
  *
  * @param {FormData} data - Client form data.
  */
-export async function signUpUser(data: FormData) {
+export async function signUpUserAction(data: FormData) {
 	// Assigns form values to object
 	const formValues = {
 		email: data.get('email') as string,
@@ -19,7 +19,7 @@ export async function signUpUser(data: FormData) {
 	};
 
 	// Zod form schema validation
-	signUpUserSchema.parse(formValues);
+	signUpUserActionSchema.parse(formValues);
 
 	// User variable to be used in credential validation
 	let user;

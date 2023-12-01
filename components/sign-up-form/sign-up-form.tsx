@@ -1,4 +1,4 @@
-import { signUpUser } from './actions/sign-up-user-action';
+import { signUpUserAction } from './actions/sign-up-user-action';
 import { Button, Input } from '@nextui-org/react';
 import { useRef, useState } from 'react';
 
@@ -11,7 +11,7 @@ export default function SignUpForm() {
 
 	// Sign up form handler function
 	async function signUpFormHandler(formData: FormData) {
-		const serverResponse = await signUpUser(formData);
+		const serverResponse = await signUpUserAction(formData);
 		if (serverResponse) setErrorMessage(serverResponse.message);
 		else {
 			formElementRef.current?.reset();
