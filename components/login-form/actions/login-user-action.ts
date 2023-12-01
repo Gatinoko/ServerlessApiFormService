@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { MAX_AGE, TOKEN_SECRET } from '@/auth/auth-config';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-import { loginUserSchema } from '../schemas/login-user-schema';
+import { loginUserActionSchema } from '../schemas/login-user-schema';
 import prismaClient from '@/prisma/prisma';
 
 /**
@@ -12,7 +12,7 @@ import prismaClient from '@/prisma/prisma';
  *
  * @param {FormData} data - Client form data.
  */
-export async function loginUser(data: FormData) {
+export async function loginUserAction(data: FormData) {
 	// Checks if token cookie is already present in the browser
 	if (cookies().get('token'))
 		return {
@@ -27,7 +27,7 @@ export async function loginUser(data: FormData) {
 	};
 
 	// Zod form schema validation
-	loginUserSchema.parse(formValues);
+	loginUserActionSchema.parse(formValues);
 
 	// Find user database operation
 	let user;

@@ -1,6 +1,6 @@
 'use client';
 
-import { loginUser } from './actions/login-user-action';
+import { loginUserAction } from './actions/login-user-action';
 import { Button, Input } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
@@ -17,7 +17,7 @@ export default function LoginForm() {
 
 	// Login form handler function
 	async function loginFormHandler(formData: FormData) {
-		const serverResponse = await loginUser(formData);
+		const serverResponse = await loginUserAction(formData);
 		if (serverResponse) setErrorMessage(serverResponse.message);
 		else {
 			formElementRef.current?.reset();
