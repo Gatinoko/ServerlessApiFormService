@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
 	Navbar as Navigation,
 	NavbarBrand,
@@ -13,8 +13,6 @@ import {
 	Avatar,
 	DropdownMenu,
 	DropdownItem,
-	Input,
-	Image,
 } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 ('./login-signup-buttons/nav-content');
@@ -93,7 +91,16 @@ export default function Navbar({ jwtToken }: NavigationProps) {
 									<p className='font-semibold'>
 										{`Welcome, ${authInformation.username}!`}
 									</p>
-									<p className=' text-green-500'>zoey@example.com</p>
+									<p className='font-semibold text-primary-600'>
+										{authInformation.email}
+									</p>
+								</DropdownItem>
+
+								{/* My videos page button */}
+								<DropdownItem
+									key='myApiKeys'
+									href={`/user/${authInformation.username}/api-keys`}>
+									API Keys
 								</DropdownItem>
 
 								{/* Logout button */}
@@ -101,13 +108,6 @@ export default function Navbar({ jwtToken }: NavigationProps) {
 									key='logout'
 									onClick={logoutButtonHandler}>
 									Log Out
-								</DropdownItem>
-
-								{/* My videos page button */}
-								<DropdownItem
-									key='myVideos'
-									href='/my-videos'>
-									My Videos
 								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
