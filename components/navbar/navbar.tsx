@@ -54,7 +54,7 @@ export default function Navbar({ jwtToken }: NavigationProps) {
 			<NavbarBrand
 				as={Link}
 				href='/'>
-				<div className='w-fit h-fit p-1 py-0 bg-primary-600 rounded-md me-2 flex items-center justify-center font-extralight text-2xl text-white'>
+				<div className='w-fit h-fit p-1 py-0 bg-primary-100 rounded-md me-2 flex items-center justify-center font-medium text-2xl text-default-foreground'>
 					SFAS
 				</div>
 				<p className='font-semibold text-default-foreground'>
