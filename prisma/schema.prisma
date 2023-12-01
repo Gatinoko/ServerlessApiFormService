@@ -22,5 +22,7 @@ model User {
 model ApiKey {
   id String @id @default(uuid())
   alias String
-  user User @relation(fields: [id], references: [id])
+
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
