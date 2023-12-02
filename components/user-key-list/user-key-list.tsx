@@ -2,15 +2,11 @@
 
 import KeyListItem from './key-list-item';
 import { getUserKeysAction } from './actions/get-user-keys-action';
-import { cookies } from 'next/headers';
-import jwt from 'jsonwebtoken';
-import { DecodedJwtPayload } from '@/types/action-types';
+import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
 
 export default async function UserKeyList({ username }: { username: string }) {
 	// Decoded jwt token payload
-	const decodedJwtPayload = jwt.decode(
-		cookies().get('token')!.value
-	) as DecodedJwtPayload;
+	const decodedJwtPayload = await getJwtTokenAction();
 
 	// Current user's generated api keys
 	const userApiKeys = await getUserKeysAction(decodedJwtPayload.username);
@@ -21,8 +17,9 @@ export default async function UserKeyList({ username }: { username: string }) {
 				userApiKeys?.apiKeys.map((apiKey, index, array) => (
 					<KeyListItem
 						key={index}
-						alias={apiKey.alias}
-						id={apiKey.id}
+						keyAlias={apiKey.alias}
+						keyId={apiKey.id}
+						userId={decodedJwtPayload.id}
 					/>
 				))}
 		</ul>

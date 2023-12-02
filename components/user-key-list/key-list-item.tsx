@@ -1,33 +1,73 @@
 'use client';
 
 import { Button, Input } from '@nextui-org/react';
+import { deleteKeyAction } from './actions/delete-key-action';
+import { useRouter } from 'next/navigation';
+import { Error } from '@/types/action-types';
+import { regenerateKeyAction } from './actions/regenerate-key-action';
 
 export type KeyListItemProps = {
-	alias: string;
-	id: string;
+	keyAlias: string;
+	keyId: string;
+	userId: string;
 };
 
-export default function KeyListItem({ alias, id }: KeyListItemProps) {
+export default function KeyListItem({
+	keyAlias,
+	keyId,
+	userId,
+}: KeyListItemProps) {
+	// Router
+	const router = useRouter();
+
+	// Delete key button handler function
+	async function deleteKeyButtonHandler() {
+		const serverResponse = await deleteKeyAction(userId, keyId);
+		if (!('id' in serverResponse)) {
+			// setErrorMessage(serverResponse.message)
+			console.log('error');
+		} else {
+			// setErrorMessage('‎ ');
+			router.refresh();
+		}
+	}
+
+	// Regenerate key button handler function
+	async function regenerateKeyValueButtonHandler() {
+		const serverResponse = await regenerateKeyAction(userId, keyId);
+		if (!('id' in serverResponse)) {
+			// setErrorMessage(serverResponse.message)
+			console.log('error');
+		} else {
+			// setErrorMessage('‎ ');
+			router.refresh();
+		}
+	}
+
 	return (
 		<li className='flex w-full items-center gap-2'>
 			<Input
 				label='Key Alias'
-				value={alias}
+				value={keyAlias}
 				isReadOnly={true}
 			/>
 			<Input
 				label='Key id'
-				value={id}
+				value={keyId}
 				isReadOnly={true}
 			/>
+
+			{/* Delete key button */}
 			<Button
 				color='danger'
-				isDisabled={true}>
+				onClick={deleteKeyButtonHandler}>
 				Delete
 			</Button>
+
+			{/* Regenerate key button */}
 			<Button
 				color='primary'
-				isDisabled={true}>
+				onClick={regenerateKeyValueButtonHandler}>
 				Regenerate
 			</Button>
 		</li>
