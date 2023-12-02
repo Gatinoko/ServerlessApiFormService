@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
 	Navbar as Navigation,
 	NavbarBrand,
@@ -20,16 +20,16 @@ import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
 import { logoutUser } from './actions/logout-user-action';
 
-type NavigationProps = {
-	jwtToken?: any;
+type NavbarProps = {
+	isAuthenticated: boolean;
 };
 
-export default function Navbar({ jwtToken }: NavigationProps) {
+export default function Navbar({ isAuthenticated }: NavbarProps) {
 	// Router reference
 	const router = useRouter();
 
 	// Auth context information
-	const { authInformation, setAuthInformation } = useContext(AuthContext);
+	const { authInformation } = useContext(AuthContext);
 
 	// Logout button handler function
 	async function logoutButtonHandler() {
@@ -37,20 +37,8 @@ export default function Navbar({ jwtToken }: NavigationProps) {
 		router.refresh();
 	}
 
-	useEffect(() => {
-		// If token is present, update the auth context
-		if (jwtToken)
-			setAuthInformation({
-				isAuthenticated: true,
-				firstName: jwtToken.firstName,
-				lastName: jwtToken.lastName,
-				email: jwtToken.email,
-				username: jwtToken.username,
-			});
-	}, [jwtToken, setAuthInformation]);
-
 	return (
-		<Navigation className=''>
+		<Navigation>
 			<NavbarBrand
 				as={Link}
 				href='/'>
@@ -65,7 +53,7 @@ export default function Navbar({ jwtToken }: NavigationProps) {
 			<NavbarContent
 				justify='end'
 				className='flex gap-4'>
-				{jwtToken ? (
+				{isAuthenticated ? (
 					<>
 						{/* Avatar with dropdown menu */}
 						<Dropdown placement='bottom-end'>

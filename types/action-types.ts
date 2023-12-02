@@ -17,3 +17,16 @@ export type Error = {
 export type SuccessResponse = {
 	message: string;
 };
+
+/**
+ * Custom type for back-end operations utilizing JWT tokens.
+ *
+ * @param {string} id - User object's unique identifier.
+ * @param {string} email - User email.
+ * @param {string} username - The account's chosen username.
+ */
+export type DecodedJwtPayload = {
+	id: string;
+	email: string;
+	username: string;
+};

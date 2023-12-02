@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar/navbar';
 import { PropsWithChildren } from 'react';
 import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';
+import { DecodedJwtPayload } from '@/types/action-types';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 	// Returns decoded authentication token
 	function getAuthToken() {
 		const jwtToken = cookies().get('token');
-		return jwt.decode(jwtToken?.value as string);
+		return jwt.decode(jwtToken?.value as string) as DecodedJwtPayload;
 	}
 
 	return (
@@ -26,8 +27,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
 			lang='en'
 			className='white'>
 			<body className={inter.className}>
-				<Providers>
-					<Navbar jwtToken={getAuthToken()} />
+				<Providers decodedJwtPayload={getAuthToken()}>
+					<Navbar isAuthenticated={getAuthToken() ? true : false} />
 					{children}
 				</Providers>
 			</body>
