@@ -84,9 +84,16 @@ export default function Navbar({ isAuthenticated }: NavbarProps) {
 									</p>
 								</DropdownItem>
 
-								{/* My videos page button */}
+								{/* User applications button */}
 								<DropdownItem
-									key='myApiKeys'
+									key='userApplications'
+									href={`/user/${authInformation.username}/applications`}>
+									Applications
+								</DropdownItem>
+
+								{/* My api keys page button */}
+								<DropdownItem
+									key='userApiKeys'
 									href={`/user/${authInformation.username}/api-keys`}>
 									API Keys
 								</DropdownItem>
