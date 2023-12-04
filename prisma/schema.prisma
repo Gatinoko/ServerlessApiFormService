@@ -17,6 +17,7 @@ model User {
   username     String        @unique
   password     String
   applications Application[]
+  apiKeys      ApiKey[]
 }
 
 model ApiKey {
@@ -25,11 +26,14 @@ model ApiKey {
 
   applicationId String      @unique
   application   Application @relation(fields: [applicationId], references: [id])
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Application {
-  id   String @id @default(uuid())
-  name String
+  id     String  @id @default(uuid())
+  name   String
   apiKey ApiKey?
 
   userId String
