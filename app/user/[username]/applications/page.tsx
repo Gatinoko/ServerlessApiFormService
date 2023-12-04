@@ -1,5 +1,5 @@
-import GenerateKeyForm from '@/components/generate-key-form/generate-key-form';
-import UserKeyList from '@/components/user-key-list/user-key-list';
+import ApplicationItem from '@/components/application-item-list/application-item';
+import ApplicationItemList from '@/components/application-item-list/application-item-list';
 
 export default function Page({ params }: { params: { username: string } }) {
 	return (
@@ -10,18 +10,13 @@ export default function Page({ params }: { params: { username: string } }) {
 			{/* Horizontal separator */}
 			<hr className='border-solid' />
 
-			{/* Generate key form */}
-
-			{/* User-generated keys list */}
-			<div className='flex gap-4'>
-				<div className='flex flex-col w-48 h-48 bg-primary-100 p-6 rounded-3xl justify-end items-start'>
-					{/* Form title */}
-					<h2 className='flex h-fit text-clip text-xl font-semibold'>
-						{' '}
-						Application Name Goes Here
-					</h2>
-				</div>
-			</div>
+			{/* User-created application list */}
+			<ApplicationItemList className='w-full'>
+				<ApplicationItem
+					href={'app1'}
+					title={'app1 sdf asdfsdfsdf'}
+				/>
+			</ApplicationItemList>
 		</main>
 	);
 }
