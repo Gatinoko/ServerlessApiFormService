@@ -1,6 +1,7 @@
 'use server';
 
 import prismaClient from '@/prisma/prisma';
+import { Error } from '@/types/action-types';
 
 export async function getUserKeysAction(username: string) {
 	try {

@@ -34,15 +34,13 @@ export async function generateKeyAction(data: FormData) {
 	try {
 		await prismaClient().user.update({
 			where: {
-				username: decodedJwtPayload.username,
+				id: decodedJwtPayload.id,
 			},
 			data: {
 				apiKeys: {
-					create: [
-						{
-							alias: formValues.alias,
-						},
-					],
+					create: {
+						alias: formValues.alias,
+					},
 				},
 			},
 		});
