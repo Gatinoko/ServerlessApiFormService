@@ -36,6 +36,6 @@ model Application {
   apiKeyId String? @unique
   apiKey   ApiKey? @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
 
-  userId String @unique
+  userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
