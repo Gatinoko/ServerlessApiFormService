@@ -9,13 +9,13 @@ export default async function UserKeyList({ username }: { username: string }) {
 	const decodedJwtPayload = await getJwtTokenAction();
 
 	// Current user's generated api keys
-	const serverResponse = await getUserKeysAction(decodedJwtPayload.username);
+	const userApiKeys = await getUserKeysAction(decodedJwtPayload.id);
 
 	return (
 		<ul className='flex flex-col gap-2 w-full'>
-			{serverResponse &&
-				'id' in serverResponse &&
-				serverResponse.apiKeys.map((apiKey, index, array) => (
+			{userApiKeys &&
+				'apiKeys' in userApiKeys &&
+				userApiKeys.apiKeys.map((apiKey, index, _array) => (
 					<KeyListItem
 						key={index}
 						keyAlias={apiKey.alias}

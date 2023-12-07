@@ -3,16 +3,21 @@
 import prismaClient from '@/prisma/prisma';
 import { Error } from '@/types/action-types';
 
-export async function getUserKeysAction(username: string) {
+/**
+ * Server action for getting a user's generated api keys.
+ *
+ * @param {string} userId - User id for which the action will take effect.
+ */
+export async function getUserKeysAction(id: string) {
 	try {
-		return await prismaClient().user.findUnique({
+		return (await prismaClient().user.findUnique({
 			where: {
-				username: username,
+				id: id,
 			},
-			include: {
+			select: {
 				apiKeys: true,
 			},
-		})!;
+		}))!;
 	} catch (error) {
 		return {
 			message: 'Specified user does not exist.',
