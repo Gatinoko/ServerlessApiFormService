@@ -22,7 +22,9 @@ export default function LoginForm() {
 		else {
 			formElementRef.current?.reset();
 			setErrorMessage('‎ ');
-			router.refresh();
+
+			// Trigger DOM full reload
+			window.location.reload();
 		}
 	}
 

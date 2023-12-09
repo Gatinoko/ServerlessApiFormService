@@ -20,11 +20,9 @@ import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
 import { logoutUser } from './_actions/logout-user-action';
 
-type NavbarProps = {
-	isAuthenticated: boolean;
-};
+type NavbarProps = {};
 
-export default function Navbar({ isAuthenticated }: NavbarProps) {
+export default function Navbar(props: NavbarProps) {
 	// Router reference
 	const router = useRouter();
 
@@ -34,7 +32,6 @@ export default function Navbar({ isAuthenticated }: NavbarProps) {
 	// Logout button handler function
 	async function logoutButtonHandler() {
 		await logoutUser();
-		router.refresh();
 	}
 
 	return (
@@ -53,7 +50,7 @@ export default function Navbar({ isAuthenticated }: NavbarProps) {
 			<NavbarContent
 				justify='end'
 				className='flex gap-4'>
-				{isAuthenticated ? (
+				{authInformation.isAuthenticated ? (
 					<>
 						{/* Avatar with dropdown menu */}
 						<Dropdown placement='bottom-end'>
@@ -70,6 +67,7 @@ export default function Navbar({ isAuthenticated }: NavbarProps) {
 
 							{/* Dropdown menu */}
 							<DropdownMenu
+								key='dropdown-menu'
 								aria-label='Profile Actions'
 								variant='flat'>
 								{/* User profile */}

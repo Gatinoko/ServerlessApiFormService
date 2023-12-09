@@ -14,15 +14,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
+	// Decoded jwt token payload
+	const decodedJwtPayload = await getJwtTokenAction();
+
 	return (
 		<html
 			lang='en'
 			className='white'>
 			<body className={inter.className}>
-				<Providers decodedJwtPayload={await getJwtTokenAction()}>
-					<Navbar
-						isAuthenticated={(await getJwtTokenAction()) ? true : false}
-					/>
+				<Providers decodedJwtPayload={decodedJwtPayload}>
+					<Navbar />
 					{children}
 				</Providers>
 			</body>
