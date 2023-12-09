@@ -27,7 +27,7 @@ export default function CreateApplicationForm({
 	async function createApplicationFormHandler(formData: FormData) {
 		console.log(formData.get('apiKey'));
 		const serverResponse = await createApplicationAction(formData);
-		if (serverResponse) setErrorMessage(serverResponse.message);
+		if (serverResponse) console.log(serverResponse.message);
 		else {
 			formElementRef.current?.reset();
 			setErrorMessage('‎ ');
@@ -37,36 +37,42 @@ export default function CreateApplicationForm({
 	return (
 		<form
 			ref={formElementRef}
-			className='flex flex-col gap-2'
+			className='flex flex-col gap-4 bg-primary-100 p-6 rounded-3xl'
 			action={createApplicationFormHandler}>
-			{/* Application name field */}
-			<Input
-				key='name'
-				type='text'
-				label='Name'
-				name='name'
-				isRequired={true}
-			/>
+			{/* Form title */}
+			<h2 className='text-3xl flex w-full'>Create New Application</h2>
 
-			{/* Select element with the current user's created api keys */}
-			<Select
-				items={apiKeys}
-				label='Api Key'
-				placeholder='Select an existing api key'
-				name='apiKey'
-				isRequired={true}>
-				{apiKeys &&
-					apiKeys.map((apiKey, _index, _array) => (
-						<SelectItem
-							key={apiKey.id}
-							isDisabled={apiKeysInUse.includes(apiKey.id)}>
-							{apiKey.id}
-						</SelectItem>
-					))}
-			</Select>
+			{/* Horizontal spacer */}
+			<hr className='border-solid border-primary opacity-50' />
 
-			{/* Form error message */}
-			<p className='text-red-500'>{errorMessage}</p>
+			{/* Input fields */}
+			<div className='flex flex-col gap-2'>
+				{/* Application name field */}
+				<Input
+					key='name'
+					type='text'
+					label='Name'
+					name='name'
+					isRequired={true}
+				/>
+
+				{/* Select element with the current user's created api keys */}
+				<Select
+					items={apiKeys}
+					label='Api Key'
+					placeholder='Select an existing api key'
+					name='apiKey'
+					isRequired={true}>
+					{apiKeys &&
+						apiKeys.map((apiKey, _index, _array) => (
+							<SelectItem
+								key={apiKey.id}
+								isDisabled={apiKeysInUse.includes(apiKey.id)}>
+								{apiKey.id}
+							</SelectItem>
+						))}
+				</Select>
+			</div>
 
 			{/* Sign up button */}
 			<Button type='submit'>Add application</Button>
