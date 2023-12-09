@@ -68,7 +68,7 @@ export default function CreateApplicationForm({
 							<SelectItem
 								key={apiKey.id}
 								isDisabled={apiKeysInUse.includes(apiKey.id)}>
-								{apiKey.id}
+								{`${apiKey.id} (${apiKey.alias})`}
 							</SelectItem>
 						))}
 				</Select>
