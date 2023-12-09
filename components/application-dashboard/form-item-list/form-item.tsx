@@ -10,7 +10,7 @@ export type FormItemProps = {
 
 export default function FormItem({ id, title, description }: FormItemProps) {
 	return (
-		<li className='flex gap-2 bg-primary-200 p-6 rounded-3xl w-full'>
+		<li className='flex gap-2 bg-primary-200 p-4 rounded-3xl w-full'>
 			{/* Checkbox for item selection */}
 			<Checkbox value={id} />
 

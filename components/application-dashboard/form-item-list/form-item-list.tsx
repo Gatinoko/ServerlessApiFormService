@@ -15,7 +15,7 @@ export default async function FormItemList({
 	const userFormItems = await getApplicationFormItemsAction(applicationId);
 
 	return (
-		<ul className='flex flex-col gap-2 w-full bg-primary-100 p-4 rounded-3xl'>
+		<ul className='flex flex-col gap-2 w-full bg-primary-100 p-6 rounded-3xl'>
 			{userFormItems &&
 				'formItems' in userFormItems &&
 				userFormItems.formItems.map((formItem, index, _array) => (
