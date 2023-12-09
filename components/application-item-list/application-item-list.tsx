@@ -25,7 +25,7 @@ export default async function ApplicationItemList({
 				userApplications.applications.map((apiKey, index, _array) => (
 					<ApplicationItem
 						key={index}
-						href={apiKey.name}
+						href={apiKey.id}
 						title={apiKey.name}
 					/>
 				))}
