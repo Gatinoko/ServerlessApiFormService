@@ -14,7 +14,6 @@ import {
 	DropdownMenu,
 	DropdownItem,
 } from '@nextui-org/react';
-import { useRouter } from 'next/navigation';
 ('./login-signup-buttons/nav-content');
 import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
@@ -23,15 +22,15 @@ import { logoutUser } from './_actions/logout-user-action';
 type NavbarProps = {};
 
 export default function Navbar(props: NavbarProps) {
-	// Router reference
-	const router = useRouter();
-
 	// Auth context information
 	const { authInformation } = useContext(AuthContext);
 
 	// Logout button handler function
 	async function logoutButtonHandler() {
 		await logoutUser();
+
+		// Trigger DOM full reload
+		window.location.reload();
 	}
 
 	return (
@@ -39,9 +38,12 @@ export default function Navbar(props: NavbarProps) {
 			<NavbarBrand
 				as={Link}
 				href='/'>
+				{/* Logo */}
 				<div className='w-fit h-fit p-1 py-0 bg-primary-100 rounded-md me-2 flex items-center justify-center font-medium text-2xl text-default-foreground'>
 					SFAS
 				</div>
+
+				{/* Title */}
 				<p className='font-semibold text-default-foreground'>
 					Serverless Form API Service
 				</p>
