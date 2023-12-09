@@ -3,7 +3,7 @@
 import { PropsWithChildren, useState } from 'react';
 import ApplicationActionBar from './application-action-bar/application-action-bar';
 import { CheckboxGroup } from '@nextui-org/react';
-import { deleteMultipleFormItemsAction } from './actions/delete-multiple-form-items-action';
+import { deleteMultipleFormItemsAction } from './_actions/delete-multiple-form-items-action';
 import { useRouter } from 'next/navigation';
 
 export type ApplicationDashboardProps = {} & PropsWithChildren;

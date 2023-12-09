@@ -1,6 +1,6 @@
 'use client';
 
-import { loginUserAction } from './actions/login-user-action';
+import { loginUserAction } from './_actions/login-user-action';
 import { Button, Input } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';

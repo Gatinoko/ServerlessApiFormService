@@ -1,10 +1,10 @@
 'use client';
 
 import { Button, Input } from '@nextui-org/react';
-import { deleteKeyAction } from './actions/delete-key-action';
+import { deleteKeyAction } from './_actions/delete-key-action';
 import { useRouter } from 'next/navigation';
 import { Error } from '@/types/action-types';
-import { regenerateKeyAction } from './actions/regenerate-key-action';
+import { regenerateKeyAction } from './_actions/regenerate-key-action';
 
 export type KeyListItemProps = {
 	keyAlias: string;

@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { MAX_AGE, TOKEN_SECRET } from '@/auth/auth-config';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
-import { loginUserActionSchema } from '../schemas/login-user-schema';
+import { loginUserActionSchema } from '../_schemas/login-user-schema';
 import prismaClient from '@/prisma/prisma';
 
 /**

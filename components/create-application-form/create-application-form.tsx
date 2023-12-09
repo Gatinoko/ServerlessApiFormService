@@ -2,7 +2,7 @@
 
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 import { useRef, useState } from 'react';
-import { createApplicationAction } from './actions/create-application-action';
+import { createApplicationAction } from './_actions/create-application-action';
 
 export type CreateApplicationFormProps = {
 	apiKeys: {

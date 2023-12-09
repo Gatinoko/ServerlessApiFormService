@@ -1,7 +1,7 @@
 'use server';
 
 import FormItem from './form-item';
-import { getApplicationFormItemsAction } from './actions/get-user-form-items-action';
+import { getApplicationFormItemsAction } from './_actions/get-user-form-items-action';
 import { CheckboxGroup } from '@nextui-org/react';
 
 export type FormItemListProps = {

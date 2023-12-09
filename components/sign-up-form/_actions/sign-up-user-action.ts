@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { signUpUserActionSchema } from '../schemas/sign-up-user-schema';
+import { signUpUserActionSchema } from '../_schemas/sign-up-user-schema';
 import { Error } from '@/types/action-types';
 import prismaClient from '@/prisma/prisma';
 

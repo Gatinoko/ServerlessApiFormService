@@ -1,4 +1,4 @@
-import { signUpUserAction } from './actions/sign-up-user-action';
+import { signUpUserAction } from './_actions/sign-up-user-action';
 import { Button, Input } from '@nextui-org/react';
 import { useRef, useState } from 'react';
 

@@ -1,7 +1,7 @@
 'use server';
 
 import KeyListItem from './key-list-item';
-import { getUserKeysAction } from './actions/get-user-keys-action';
+import { getUserKeysAction } from './_actions/get-user-keys-action';
 import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
 
 export default async function UserKeyList({ username }: { username: string }) {

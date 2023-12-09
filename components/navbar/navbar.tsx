@@ -18,7 +18,7 @@ import { useRouter } from 'next/navigation';
 ('./login-signup-buttons/nav-content');
 import { useContext } from 'react';
 import { AuthContext } from '@/context/auth-context';
-import { logoutUser } from './actions/logout-user-action';
+import { logoutUser } from './_actions/logout-user-action';
 
 type NavbarProps = {
 	isAuthenticated: boolean;

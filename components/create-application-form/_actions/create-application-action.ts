@@ -1,34 +1,51 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { generateKeyActionSchema } from '../schemas/generate-key-action-schema';
 import { DecodedJwtPayload, Error } from '@/types/action-types';
 import prismaClient from '@/prisma/prisma';
 import jwt from 'jsonwebtoken';
 import { randomUUID } from 'crypto';
 import { cookies } from 'next/headers';
+import { createApplicationActionSchema } from '../_schemas/create-application-action-schema';
 
 /**
- * Server action for the generate key form.
+ * Server action for creating a new appllication.
  *
  * @param {FormData} data - Client form data.
  * @param {string} username - User account's username for which the action will take effect.
  */
-export async function generateKeyAction(data: FormData) {
+export async function createApplicationAction(data: FormData) {
+	console.log(data);
 	// Assigns form values to object
 	const formValues = {
-		alias: data.get('alias') as string,
+		name: data.get('name') as string,
+		apiKeyId: data.get('apiKey') as string,
 	};
 
 	// Zod form schema validation
-	generateKeyActionSchema.parse(formValues);
+	createApplicationActionSchema.parse(formValues);
 
 	// Decoded jwt token payload
 	const decodedJwtPayload = jwt.decode(
 		cookies().get('token')!.value
 	) as DecodedJwtPayload;
 
-	console.log(decodedJwtPayload);
+	// Checks which user-generated keys are available for use
+	let duplicateKey;
+	try {
+		const apiKey = await prismaClient().application.findFirst({
+			where: {
+				userId: decodedJwtPayload.id,
+				apiKeyId: formValues.apiKeyId,
+			},
+		});
+		apiKey ? (duplicateKey = true) : false;
+	} catch (error: any) {
+		return {
+			message: 'Error. Key is already in use somewhere else.',
+			cause: 'APP_KEY_IN_USE',
+		} as Error;
+	}
 
 	// Create api key database operation
 	try {
@@ -37,9 +54,10 @@ export async function generateKeyAction(data: FormData) {
 				id: decodedJwtPayload.id,
 			},
 			data: {
-				apiKeys: {
+				applications: {
 					create: {
-						alias: formValues.alias,
+						name: formValues.name,
+						apiKeyId: formValues.apiKeyId,
 					},
 				},
 			},

@@ -2,9 +2,9 @@
 
 import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
 import ApplicationItemList from '@/components/application-item-list/application-item-list';
-import { getUserKeysInUseAction } from '@/components/create-application-form/actions/get-user-keys-in-use-action';
+import { getUserKeysInUseAction } from '@/components/create-application-form/_actions/get-user-keys-in-use-action';
 import CreateApplicationForm from '@/components/create-application-form/create-application-form';
-import { getUserKeysAction } from '@/components/user-key-list/actions/get-user-keys-action';
+import { getUserKeysAction } from '@/components/user-key-list/_actions/get-user-keys-action';
 
 export default async function Page({
 	params,

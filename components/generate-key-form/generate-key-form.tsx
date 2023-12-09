@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Input } from '@nextui-org/react';
-import { generateKeyAction } from './actions/generate-key-action';
+import { generateKeyAction } from './_actions/generate-key-action';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '@/context/auth-context';
 import { useRouter } from 'next/navigation';

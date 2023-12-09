@@ -1,7 +1,7 @@
 'use server';
 
 import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
-import { getUserApplicationsAction } from './actions/get-user-applications-action';
+import { getUserApplicationsAction } from './_actions/get-user-applications-action';
 import ApplicationItem from './application-item';
 
 export type ApplicationItemListProps = {};

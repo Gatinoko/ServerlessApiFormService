@@ -2,7 +2,7 @@
 
 import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
 import ApplicationDashboard from '@/components/application-dashboard/application-dashboard';
-import { getApplicationInformationAction } from '@/components/application-dashboard/form-item-list/actions/get-application-information-action';
+import { getApplicationInformationAction } from '@/components/application-dashboard/form-item-list/_actions/get-application-information-action';
 import FormItemList from '@/components/application-dashboard/form-item-list/form-item-list';
 
 export default async function Page({
