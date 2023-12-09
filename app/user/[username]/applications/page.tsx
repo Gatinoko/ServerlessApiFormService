@@ -37,7 +37,7 @@ export default async function Page({
 			)}
 
 			{/* User-created application list */}
-			<ApplicationItemList className='w-full' />
+			<ApplicationItemList />
 		</main>
 	);
 }
