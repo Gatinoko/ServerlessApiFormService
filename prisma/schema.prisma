@@ -30,12 +30,22 @@ model ApiKey {
 }
 
 model Application {
-  id   String @id @unique @default(uuid())
-  name String
+  id        String     @id @unique @default(uuid())
+  name      String
+  formItems FormItem[]
 
   apiKeyId String? @unique
   apiKey   ApiKey? @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FormItem {
+  id          String @id @unique @default(uuid())
+  title       String
+  description String
+
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
 }
