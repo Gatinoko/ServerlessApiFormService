@@ -3,6 +3,7 @@
 import { Button, Input, Select, SelectItem } from '@nextui-org/react';
 import { useRef, useState } from 'react';
 import { createApplicationAction } from './_actions/create-application-action';
+import { useRouter } from 'next/navigation';
 
 export type CreateApplicationFormProps = {
 	apiKeys: {
@@ -17,6 +18,9 @@ export default function CreateApplicationForm({
 	apiKeys,
 	apiKeysInUse,
 }: CreateApplicationFormProps) {
+	// Router
+	const router = useRouter();
+
 	// HTML form element reference
 	const formElementRef = useRef<HTMLFormElement>(null);
 
@@ -31,6 +35,7 @@ export default function CreateApplicationForm({
 		else {
 			formElementRef.current?.reset();
 			setErrorMessage('‎ ');
+			router.refresh();
 		}
 	}
 
@@ -75,7 +80,11 @@ export default function CreateApplicationForm({
 			</div>
 
 			{/* Sign up button */}
-			<Button type='submit'>Add application</Button>
+			<Button
+				type='submit'
+				color='primary'>
+				Add application
+			</Button>
 		</form>
 	);
 }
