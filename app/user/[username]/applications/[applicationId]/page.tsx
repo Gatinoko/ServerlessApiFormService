@@ -1,8 +1,8 @@
 'use server';
 
-import { getJwtTokenAction } from '@/auth/actions/get-jwt-token-action';
 import ApplicationDashboard from '@/components/application-dashboard/application-dashboard';
-import { getApplicationInformationAction } from '@/components/application-dashboard/form-item-list/_actions/get-application-information-action';
+import BusinessContactList from '@/components/application-dashboard/business-contact-list/business-contact-list';
+import { getApplicationInformationAction } from '@/app/user/[username]/applications/[applicationId]/_actions/get-application-information-action';
 import FormItemList from '@/components/application-dashboard/form-item-list/form-item-list';
 
 export default async function Page({
@@ -28,9 +28,12 @@ export default async function Page({
 			<hr className='border-solid' />
 
 			{/* App actions bar */}
-			<ApplicationDashboard>
-				<FormItemList applicationId={params.applicationId} />
-			</ApplicationDashboard>
+			<ApplicationDashboard
+				formItemList={<FormItemList applicationId={params.applicationId} />}
+				businessContactList={
+					<BusinessContactList applicationId={params.applicationId} />
+				}
+			/>
 		</main>
 	);
 }
