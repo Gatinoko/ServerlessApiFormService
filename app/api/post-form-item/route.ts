@@ -1,5 +1,5 @@
 import prismaClient from '@/prisma/prisma';
-import { submitFormApiSchema } from './_schemas/submit-form-schema';
+import { postFormItemApiSchema } from './_schemas/post-form-item-schema';
 import { FormItemRequest } from '@/types/api-types';
 
 export async function POST(request: Request) {
@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
 	// Zod schema validation
 	try {
-		submitFormApiSchema.parse(requestBody);
+		postFormItemApiSchema.parse(requestBody);
 	} catch (error: any) {
 		return new Response(
 			'SCHEMA_ERROR: The data does not comply with the required endpoint schema.',
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 		);
 	}
 
-	// Create FormItem on the application related to the specified api key
+	// Create form item on the application related to the specified api key
 	try {
 		await prismaClient().application.update({
 			where: {
