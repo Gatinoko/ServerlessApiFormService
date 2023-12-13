@@ -1,8 +1,7 @@
 'use server';
 
-import FormItem from './business-contact-item';
 import { getApplicationBusinessContactsAction } from './_actions/get-application-business-contacts-action';
-import BusinessContactItem from './business-contact-item';
+import BusinessContactItem from './business-contact';
 
 export type FormItemListProps = {
 	applicationId: string;
