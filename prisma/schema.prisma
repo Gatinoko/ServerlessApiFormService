@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id           String        @id @unique @default(uuid())
+  id           String        @id @default(uuid())
   creationDate DateTime      @default(now())
   email        String        @unique
   username     String        @unique
@@ -21,7 +21,7 @@ model User {
 }
 
 model ApiKey {
-  id          String       @id @unique @default(uuid())
+  id          String       @id @default(uuid())
   alias       String
   application Application?
 
@@ -30,7 +30,7 @@ model ApiKey {
 }
 
 model Application {
-  id        String     @id @unique @default(uuid())
+  id        String     @id @default(uuid())
   name      String
   formItems FormItem[]
   businessContacts BusinessContact[]
@@ -43,7 +43,7 @@ model Application {
 }
 
 model FormItem {
-  id          String @id @unique @default(uuid())
+  id          String @id @default(uuid())
   title       String
   description String
 
@@ -52,7 +52,7 @@ model FormItem {
 }
 
 model BusinessContact {
-  id String @id @unique @default(uuid())
+  id String @id @default(uuid())
   name String
   contactInfo String
 
