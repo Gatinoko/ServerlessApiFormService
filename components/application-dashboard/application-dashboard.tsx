@@ -7,7 +7,7 @@ import {
 	SetStateAction,
 	useState,
 } from 'react';
-import ApplicationActionBar from './application-action-bar/application-action-bar';
+import ApplicationActionBar from './application-action-bar';
 import { CheckboxGroup, Tab, Tabs } from '@nextui-org/react';
 import { deleteMultipleFormItemsAction } from './_actions/delete-multiple-form-items-action';
 import { useRouter } from 'next/navigation';
