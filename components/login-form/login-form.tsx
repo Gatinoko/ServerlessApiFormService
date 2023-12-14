@@ -55,7 +55,11 @@ export default function LoginForm() {
 			<p className='text-red-500'>{errorMessage}</p>
 
 			{/* Login button */}
-			<Button type='submit'>Login</Button>
+			<Button
+				type='submit'
+				color='primary'>
+				Login
+			</Button>
 		</form>
 	);
 }

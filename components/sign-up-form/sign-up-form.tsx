@@ -55,7 +55,11 @@ export default function SignUpForm() {
 			<p className='text-red-500'>{errorMessage}</p>
 
 			{/* Sign up button */}
-			<Button type='submit'>Sign Up</Button>
+			<Button
+				type='submit'
+				color='primary'>
+				Sign Up
+			</Button>
 		</form>
 	);
 }
