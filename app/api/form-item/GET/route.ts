@@ -1,5 +1,4 @@
 import prismaClient from '@/prisma/prisma';
-import { getFormItemApiSchema } from './_schemas/get-form-item-schema';
 import { NextResponse } from 'next/server';
 
 /**
