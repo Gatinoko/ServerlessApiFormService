@@ -32,6 +32,7 @@ export async function signUpUserAction(data: FormData) {
 			},
 		});
 	} catch (error: any) {
+		console.log(error);
 		return {
 			message: 'Database error.',
 			cause: 'DB_ERROR',
