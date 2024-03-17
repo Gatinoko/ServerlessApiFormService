@@ -10,7 +10,7 @@ This project was deployed using Vercel (for hosting) and Planetscale (as a datab
 - API service with programatic creation and deletion of **form items** and **business contacts** (generic units of data)
 
 # Architecture
-![serverless_form_app_architecture](https://github.com/Gatinoko/ServerlessApiFormService/assets/72329484/3160bead-57e2-4ad6-a6fa-1078030758f0)
+![serverless_form_app_architecture](https://github.com/Gatinoko/ServerlessApiFormService/assets/72329484/f17aeb86-1a91-4f79-a8c7-de6451de1d92)
 
 # Demos
 https://github.com/Gatinoko/COMP231-ServerlessApiFormService/assets/72329484/08a6fa73-b294-4c07-8566-460c8297da27
